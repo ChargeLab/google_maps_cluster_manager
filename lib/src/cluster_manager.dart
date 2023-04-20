@@ -208,7 +208,7 @@ class ClusterManager<T extends ClusterItem> {
         .toList();
 
     final Cluster<T> cluster = Cluster<T>.fromItems(items);
-    cluster.zoom = level;
+    cluster.zoom = levels[level - 1];
     markerItems.add(cluster);
 
     List<T> newInputList = List.from(
