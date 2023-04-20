@@ -7,7 +7,7 @@ class Cluster<T extends ClusterItem> {
   /// Zoom level at which this cluster breaks into individual items
   double? breakdownZoom;
 
-  Cluster(this.items, this.location, {this.zoom});
+  Cluster(this.items, this.location, {this.breakdownZoom});
 
   Cluster.fromItems(Iterable<T> items)
       : this.items = items,
