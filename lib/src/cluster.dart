@@ -4,8 +4,9 @@ import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platf
 class Cluster<T extends ClusterItem> {
   final LatLng location;
   final Iterable<T> items;
+  int? zoom;
 
-  Cluster(this.items, this.location);
+  Cluster(this.items, this.location, {this.zoom});
 
   Cluster.fromItems(Iterable<T> items)
       : this.items = items,

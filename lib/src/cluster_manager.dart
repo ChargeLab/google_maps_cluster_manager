@@ -207,7 +207,9 @@ class ClusterManager<T extends ClusterItem> {
         .where((p) => p.geohash.substring(0, level) == nextGeohash)
         .toList();
 
-    markerItems.add(Cluster<T>.fromItems(items));
+    final Cluster<T> cluster = Cluster<T>.fromItems(items);
+    cluster.zoom = level;
+    markerItems.add(cluster);
 
     List<T> newInputList = List.from(
         inputItems.where((i) => i.geohash.substring(0, level) != nextGeohash));
