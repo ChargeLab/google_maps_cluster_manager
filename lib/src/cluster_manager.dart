@@ -208,12 +208,16 @@ class ClusterManager<T extends ClusterItem> {
         .toList();
 
     final Cluster<T> cluster = Cluster<T>.fromItems(items);
-    //Store the next level as breakdownZoom
-    cluster.breakdownZoom = levels[level];
-    markerItems.add(cluster);
 
     List<T> newInputList = List.from(
         inputItems.where((i) => i.geohash.substring(0, level) != nextGeohash));
+
+    //Store the next level as breakdownZoom
+    cluster.breakdownZoom = levels[level];
+    if (newInputList.isNotEmpty) {
+      cluster.hasChildClusters = true;
+    }
+    markerItems.add(cluster);
 
     return _computeClusters(newInputList, markerItems, level: level);
   }

@@ -6,6 +6,8 @@ class Cluster<T extends ClusterItem> {
   final Iterable<T> items;
   /// Zoom level at which this cluster breaks into individual items
   double? breakdownZoom;
+  /// If any item from items Iterable above is a cluster
+  bool hasChildClusters = false;
 
   Cluster(this.items, this.location, {this.breakdownZoom});
 
